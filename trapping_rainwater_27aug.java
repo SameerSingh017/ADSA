@@ -26,10 +26,10 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        
         int[] height = {4,2,0,3,2,5};
         System.out.println(trap(height));
     }
 }
+
 
 
