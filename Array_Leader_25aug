@@ -1,7 +1,5 @@
 import java.util.Arrays;
 
-// Array Leader
-
 public class Solution {
     public static int[] replaceElements(int[] arr) {
         int n = arr.length;
