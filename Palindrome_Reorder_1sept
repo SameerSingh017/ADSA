@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class PalindromeRearrangement {
+
+    public static String makePalindrome(String s) {
+        // Step 1: Calculate frequencies of each characrter
+        HashMap<Character, Integer> freq = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
+        }
+
+        // Step 2: Check how many odd frequency characters
+        int oddCount = 0;
+        
+        for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
+            if (entry.getValue() % 2 != 0) {
+                oddCount++;
+                
+            }
+        }
+        if (oddCount > 1) {
+            return "Not Possible";
+        }
+
+        // Step 3: Prepare result array
+        char[] result = new char[s.length()];
+        int left = 0, right = s.length() - 1;
+
+        for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
+            char c = entry.getKey();
+            int count = entry.getValue();
+
+            while (count >= 2) {
+                result[left] = c;
+                result[right] = c;
+                left++;
+                right--;
+                count -= 2;
+            }
+
+            if (count == 1) {
+                result[s.length() / 2] = c;
+            }
+        }
+
+        return new String(result);
+    }
+
+    public static void main(String[] args) {
+        String s = "aabbccdde";
+        System.out.println(s + " → " + makePalindrome(s))
+    }
+}
