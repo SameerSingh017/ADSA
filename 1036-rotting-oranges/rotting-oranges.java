@@ -8,7 +8,7 @@ class Solution {
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
                 if(grid[i][j] == 2){
-                    q.offer(new int[]{i,j});
+                    q.add(new int[]{i,j,0});
                 }else if(grid[i][j] == 1){
                     fresh++;
                 }
@@ -21,21 +21,22 @@ class Solution {
             int size = q.size();
             boolean rotten = false;
             for(int i=0; i<size; i++){
-                int[] curr = q.poll();
+                int[] curr_index = q.poll();
                 for(int[] dir : dirs){
-                    int r = curr[0] + dir[0];
-                    int c = curr[1] + dir[1];
+                    int r = curr_index[0] + dir[0];
+                    int c = curr_index[1] + dir[1];
                     if(r>=0 && r<n && c>=0 && c<m && grid[r][c] == 1){
                         grid[r][c] = 2;
-                        q.offer(new int[]{r,c});
+                        q.add(new int[]{r,c,0});
                         fresh--;
                         rotten = true;
                     }
                 }
             }
-            if (rotten) time++;
+            if(rotten) time++;
         }
         if(fresh==0) return time;
         else return -1;
+        
     }
 }
