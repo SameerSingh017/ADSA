@@ -22,8 +22,7 @@ class Solution {
         }
         int skip = solve(coins, i-1, amt, dp);
 
-        dp[i][amt] = Math.min(pick, skip);
 
-        return dp[i][amt];
+        return dp[i][amt] = Math.min(pick, skip);
     }
 }
