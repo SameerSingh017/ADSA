@@ -18,6 +18,10 @@ class Solution {
             }
             cost = temp;
         }
-        return cost[dst] == Integer.MAX_VALUE ? -1 : cost[dst];
+        if(cost[dst] == Integer.MAX_VALUE){
+            return -1;
+        }else{
+            return cost[dst];
+        }
     }
 }
