@@ -1,19 +1,17 @@
 class Solution {
     public int sumOfGoodNumbers(int[] nums, int k) {
         int sum =0;
-        for(int i=0; i<nums.length; i++){
-            if(i-k>=0 && i+k<nums.length){
+        int n = nums.length;
+        for(int i=0; i<n; i++){
+            if(i-k>=0 && i+k<n){
                 if(nums[i] > nums[i-k] && nums[i] > nums[i+k]){
                     sum+= nums[i];
                 }
-            }    
-            if(i-k<0){
+            }else if(i-k<0){
                 if(nums[i]> nums[i+k]) sum+=nums[i];
-            }
-            if(i+k>=nums.length){
+            }else if(i+k>=n){
                 if(nums[i]> nums[i-k]) sum+=nums[i];
-            }
-            if(i-k<0 && i+k>=nums.length){
+            }else{
                 sum+=nums[i];
             }
         }
